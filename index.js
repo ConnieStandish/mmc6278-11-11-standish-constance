@@ -13,6 +13,13 @@ const makePoemHTML = () => {}
 
 // attach a click event to #get-poem
 getPoemBtn.onclick = async function() {
+  
   // renders the HTML string returned by makePoemHTML to #poem
   poemEl.innerHTML = makePoemHTML(await getJSON(poemURL))
 }
+
+//output a single string of HTML inside #poem div
+//string should have h2, em inside h3, and p tags for each stanza
+//p tags should contain linebreak tags
+//use the makeTag and pipe starter code
+//split, join, and map can help separate poem into stanzas
