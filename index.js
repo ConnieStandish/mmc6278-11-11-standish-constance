@@ -8,8 +8,10 @@ const pipe = (...fns) => firstArg => fns.reduce((returnValue, fn) => fn(returnVa
 
 const makeTag = tag => str => `<${tag}>${str}</${tag}>`
 
+const makeTitle = makeTag('h2')
 const italics = makeTag('em')
 const writer = makeTag('h3')
+const stanzas = makeTag('p')
 
 // complete this function
 const makePoemHTML = ([
@@ -21,16 +23,11 @@ const makePoemHTML = ([
   ]) => {
   const renderAuthor = pipe(italics, writer)
   // console.log(title, author, lines)
-  poemEl.innerHTML=`
-  ${makeTag('h2')(title)}
-  ${renderAuthor(`by ${author}`)}`
-  
-
-  // const makeTitle = makeTag('h2')
-  // const stanzas = makeTag('p')
-
-  // const renderPoem = pipe(makeTitle, makeAuthor, stanzas)
-  // renderPoem({title, author, lines})
+  poemEl.innerHTML = `
+  ${makeTitle(title)}
+  ${renderAuthor(`by${author}`)}
+  ${stanzas(lines)}
+  `
 }
 
 // attach a click event to #get-poem
