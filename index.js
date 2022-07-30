@@ -28,6 +28,7 @@ const makePoemHTML = ([
   ${renderAuthor(`by${author}`)}
   ${stanzas(lines)}
   `
+  // poemEl.appendChild(makeTitle)
 }
 
 // attach a click event to #get-poem
