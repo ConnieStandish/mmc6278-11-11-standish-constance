@@ -16,13 +16,31 @@ const makePoemHTML = ([
       lines
     }
   ]) => {
-  const makeTitle = makeTag('h2')
-  const italics = makeTag('em')
-  const writer = makeTag('h3')
-  const renderAuthor = pipe(italics, writer)
-  const stanzas = makeTag('p')
+  let makeTitle = makeTag('h2')
+  let italics = makeTag('em')
+  let writer = makeTag('h3')
+  let renderAuthor = pipe(italics, writer)
+  let stanzasArr = []
+  let linesArr = []
+
+  lines.forEach((line, index) => {
+    if(!line) {
+      stanzasArr.push(linesArr)
+      linesArr = []
+    } else if (index === lines.length -1){
+      linesArr.push(line)
+      stanzasArr.push(linesArr)
+    } else {
+      linesArr.push(line)
+    }
+  });
+  console.log(stanzasArr)
+  let stanzas = ""
+  stanzasArr.forEach((linesArr) => {
+    stanzas += makeTag('p')(linesArr.join('<br/>'))
+  });
   
-  return makeTitle(title) + renderAuthor('by ' + author) + stanzas (lines)
+  return makeTitle(title) + renderAuthor('by ' + author) + stanzas
 }
 
 // attach a click event to #get-poem
