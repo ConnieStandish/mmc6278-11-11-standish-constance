@@ -22,17 +22,7 @@ const makePoemHTML = ([
   const renderAuthor = pipe(italics, writer)
   const stanzas = makeTag('p')
   
-  makeTitle`${title}`
-  renderAuthor`${author}`
-  stanzas`${lines}`
- 
-  // console.log(title, author, lines)
-  // poemEl.innerHTML = `
-  // ${makeTitle(title)}
-  // ${renderAuthor(`by${author}`)}
-  // ${stanzas(lines)}
-  // `
-  makePoemHTML()
+  return makeTitle(title) + renderAuthor('by ' + author) + stanzas (lines)
 }
 
 // attach a click event to #get-poem
